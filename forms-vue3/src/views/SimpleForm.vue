@@ -15,13 +15,12 @@
 
       <h3>Name & describe your event</h3>
 
-      <label>Title</label>
-      <input
+      <BaseInput
         v-model="event.title"
+        label="Title"
         type="text"
-        placeholder="Title"
-        class="field"
       >
+      </BaseInput>
 
       <label>Description</label>
       <input
@@ -87,7 +86,11 @@
 </template>
 
 <script>
+import BaseInput from '@/components/BaseInput.vue'
 export default {
+  components: {
+    'BaseInput': BaseInput
+  },
   data () {
     return {
       categories: [
