@@ -19,25 +19,20 @@
         v-model="event.title"
         label="Title"
         type="text"
-      >
-      </BaseInput>
+      />
 
-      <label>Description</label>
-      <input
+      <BaseInput
+        label="Description"
         v-model="event.description"
         type="text"
-        placeholder="Description"
-        class="field"
       />
 
       <h3>Where is your event?</h3>
 
-      <label>Location</label>
-      <input
+      <BaseInput
+        label="Location"
         v-model="event.location"
         type="text"
-        placeholder="Location"
-        class="field"
       />
 
       <h3>Are pets allowed?</h3>
