@@ -33,23 +33,12 @@
 
       <h3>Are pets allowed?</h3>
       <div>
-        <input
-            type="radio"
-            v-model="event.pets"
-            :value="1"
-            name="pets"
-          />
-        <label>Yes</label>
-      </div>
-
-      <div>
-        <input
-          type="radio"
+        <BaseRadioGroup 
           v-model="event.pets"
-          :value="0"
           name="pets"
+          :options="petOptions"
+          :vertical="true"
         />
-        <label>No</label>
       </div>
 
       <h3>Extras</h3>
@@ -76,11 +65,13 @@
 import BaseInput from '@/components/BaseInput.vue'
 import BaseSelect from '@/components/BaseSelect.vue'
 import BaseCheckbox from '@/components/BaseCheckbox.vue'
+import BaseRadioGroup from '../components/BaseRadioGroup.vue'
 export default {
   components: {
     'BaseInput': BaseInput,
     'BaseSelect': BaseSelect,
-    'BaseCheckbox': BaseCheckbox
+    'BaseCheckbox': BaseCheckbox,
+    'BaseRadioGroup': BaseRadioGroup
   },
   data () {
     return {
@@ -103,7 +94,11 @@ export default {
           catering: false,
           music: false
         }
-      }
+      },
+      petOptions: [
+        { label: 'Yes', value: 1 },
+        { label: 'No', value: 0 }
+      ]
     }
   }
 }
