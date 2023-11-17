@@ -3,16 +3,12 @@
     <h1>Create an event</h1>
     <form>
 
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option
-          v-for="option in categories"
-          :value="option"
-          :key="option"
-          :selected="option === event.category"
-        >{{ option }}</option>
-      </select>
-
+      <BaseSelect
+        label="Select a category"
+        v-model="event.category"
+        :options="categories"
+      />
+      
       <h3>Name & describe your event</h3>
 
       <BaseInput
@@ -82,9 +78,11 @@
 
 <script>
 import BaseInput from '@/components/BaseInput.vue'
+import BaseSelect from '@/components/BaseSelect.vue'
 export default {
   components: {
-    'BaseInput': BaseInput
+    'BaseInput': BaseInput,
+    'BaseSelect': BaseSelect
   },
   data () {
     return {
