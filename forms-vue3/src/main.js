@@ -3,4 +3,9 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+import BaseComponents from './globals'
+
+const app = createApp(App)
+
+app.use(BaseComponents)
+app.mount('#app')

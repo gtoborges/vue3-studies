@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Create an event</h1>
-    <form>
+    <form @submit.prevent="sendForm">
 
       <BaseSelect
         label="Select a category"
@@ -62,17 +62,7 @@
 </template>
 
 <script>
-import BaseInput from '@/components/BaseInput.vue'
-import BaseSelect from '@/components/BaseSelect.vue'
-import BaseCheckbox from '@/components/BaseCheckbox.vue'
-import BaseRadioGroup from '../components/BaseRadioGroup.vue'
 export default {
-  components: {
-    'BaseInput': BaseInput,
-    'BaseSelect': BaseSelect,
-    'BaseCheckbox': BaseCheckbox,
-    'BaseRadioGroup': BaseRadioGroup
-  },
   data () {
     return {
       categories: [
@@ -99,6 +89,11 @@ export default {
         { label: 'Yes', value: 1 },
         { label: 'No', value: 0 }
       ]
+    }
+  },
+  methods: {
+    sendForm () {
+      console.log(this.event)
     }
   }
 }
