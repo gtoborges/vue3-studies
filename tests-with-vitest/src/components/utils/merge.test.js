@@ -45,6 +45,8 @@ test('shallow merge with arrays', () => {
   expect(merged).toEqual(['vue', 'react', 'svelte', 'solid'])
 })
 
+// test.skip
+// test.fails
 test('deep merge with overlaps', () => {
   const merged = deepMerge(
     {
@@ -67,4 +69,11 @@ test('deep merge with overlaps', () => {
       twitter: 'gtoborges_'
     }
   })
+})
+
+test('throws errors on merging two different types', () => {
+  expect(() => deepMerge(
+    ['foo', 'bar'],
+    { foo: 'bar' }
+  )).toThrowError('Can not merge two different types')
 })
