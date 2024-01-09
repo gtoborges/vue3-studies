@@ -7,8 +7,8 @@ exports[`deep merge with overlaps 1`] = `
     "twitter": "gtoborges_",
   },
   "languages": [
-    "javascript",
-    "typescript",
+    "js",
+    "ts",
     "vue",
   ],
   "name": "Augusto",

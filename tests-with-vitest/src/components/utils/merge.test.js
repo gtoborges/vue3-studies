@@ -29,11 +29,13 @@ test('shallow merge with overlaps', () => {
     }
   )
 
-  expect(merged).toEqual({
-    name: 'Augusto',
-    github: 'gtoborges',
-    twitter: 'gtoborges_'
-  })
+  expect(merged).toMatchInlineSnapshot(`
+    {
+      "github": "gtoborges",
+      "name": "Augusto",
+      "twitter": "gtoborges_",
+    }
+  `)
 })
 
 test('shallow merge with arrays', () => {
@@ -54,13 +56,13 @@ test('deep merge with overlaps', () => {
       accounts: {
         github:'unkown'
       },
-      languages: ['javascript']
+      languages: ['js']
     },
     {
       accounts: {
         twitter: 'gtoborges_'
       },
-      languages: ['typescript', 'vue']
+      languages: ['ts', 'vue']
     }
   )
 
