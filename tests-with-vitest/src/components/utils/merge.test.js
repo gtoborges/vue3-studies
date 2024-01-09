@@ -62,13 +62,7 @@ test('deep merge with overlaps', () => {
     }
   )
 
-  expect(merged).toEqual({
-    name: 'Augusto',
-    accounts: {
-      github: 'unkown',
-      twitter: 'gtoborges_'
-    }
-  })
+  expect(merged).toMatchSnapshot()
 })
 
 test('throws errors on merging two different types', () => {
