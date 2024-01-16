@@ -1,5 +1,6 @@
 import { test, expect, vi, beforeAll, afterAll } from 'vitest'
 import { getPostBody } from './network'
+import { server } from './msw.setup'
 
 beforeAll(() => server.listen())
 afterAll(() => server.close())

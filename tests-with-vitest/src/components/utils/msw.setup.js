@@ -9,3 +9,7 @@ const server = setupServer(
     }
   )
 )
+
+export {
+  server
+}
