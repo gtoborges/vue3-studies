@@ -75,3 +75,7 @@ test('throws errors on merging two different types', () => {
     { foo: 'bar' }
   )).toThrowError('Can not merge two different types')
 })
+
+test('make sure DOM is not available', () => {
+  expect(typeof document).toBe('undefined')
+})
