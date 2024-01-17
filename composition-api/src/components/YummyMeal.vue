@@ -6,7 +6,7 @@
 </template>
 
 <script>
-// import { computed } from 'vue'
+import { computed } from 'vue'
 
 export default {
   props: {
@@ -15,12 +15,8 @@ export default {
   },
   setup(props, {emit}) {
     const addToCart = () => emit("addToCart", props.name);
-    return { addToCart };
-  },
-  computed: {
-    priceFormat() {
-      return `$${this.price.toFixed(2)}`;
-    }
+    const priceFormat = computed( () => `$${props.price.toFixed(2)}`);
+    return { addToCart, priceFormat };
   }
 }
 </script>
