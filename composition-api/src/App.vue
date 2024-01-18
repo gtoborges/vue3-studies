@@ -1,6 +1,7 @@
 <template>
   <h1>{{name}}</h1>
   <button @click="placeOrder">Place Order</button>
+  <button @click="removeWatcher">Hide cart alerts</button>
   <YummyMeal v-for="meal in meals"
     :name="meal.name" 
     :price="meal.price"
@@ -26,12 +27,12 @@ export default {
 
     const placeOrder = () => alert("Your order has been placed!");
     const addItemToCart = (item) => cart.push(item);
-    watch(
+    const removeWatcher = watch(
       () => [...cart], 
-      (newValue, oldValue) => console.log(newValue, oldValue)
+      (newValue, oldValue) => alert(newValue.join("\n"))
     );
 
-    return { name, placeOrder, addItemToCart, meal, meals }
+    return { name, placeOrder, addItemToCart, meal, meals, removeWatcher }
   }
 }
 </script>
