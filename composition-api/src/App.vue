@@ -11,7 +11,7 @@
 
 <script>
 import YummyMeal from './components/YummyMeal.vue'
-import { ref, reactive, watch } from 'vue';
+import { ref, reactive, watch, watchEffect } from 'vue';
 export default {
   components: { YummyMeal },
   setup() {
@@ -31,6 +31,9 @@ export default {
       () => [...cart], 
       (newValue, oldValue) => alert(newValue.join("\n"))
     );
+
+    // works like watch with immediate flag, with no new or old value
+    watchEffect(() => console.log(JSON.parse(JSON.stringify(cart)))) 
 
     return { name, placeOrder, addItemToCart, meal, meals, removeWatcher }
   }
