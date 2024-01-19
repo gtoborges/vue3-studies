@@ -16,37 +16,31 @@
   />
 </template>
 
-<script>
+<script setup>
 import YummyMeal from './components/YummyMeal.vue'
 import { ref, reactive, watch, watchEffect, provide } from 'vue';
-export default {
-  components: { YummyMeal },
-  setup() {
-    const currencySymbol = ref('R$')
-    provide("currencySymbol", currencySymbol);
-    const name = ref("The Snazzy Burger");
-    const cart = reactive([])
-    const meal = reactive({ name: "Hamburger", price: 5})
-    const meals = reactive([
-      { name: "Hamburger", price: 5 },
-      { name: "Cheeseburger", price: 6 },
-      { name: "Impossible Burger", price: 7 },
-      { name: "Fries", price: 2 }
-    ])
 
-    const placeOrder = () => alert("Your order has been placed!");
-    const addItemToCart = (item) => cart.push(item);
-    const removeWatcher = watch(
-      () => [...cart], 
-      (newValue, oldValue) => alert(newValue.join("\n"))
-    );
+const currencySymbol = ref('R$')
+provide("currencySymbol", currencySymbol);
+const name = ref("The Snazzy Burger");
+const cart = reactive([])
+const meal = reactive({ name: "Hamburger", price: 5})
+const meals = reactive([
+  { name: "Hamburger", price: 5 },
+  { name: "Cheeseburger", price: 6 },
+  { name: "Impossible Burger", price: 7 },
+  { name: "Fries", price: 2 }
+])
 
-    // works like watch with immediate flag, with no new or old value
-    watchEffect(() => console.log(JSON.parse(JSON.stringify(cart)))) 
+const placeOrder = () => alert("Your order has been placed!");
+const addItemToCart = (item) => cart.push(item);
+const removeWatcher = watch(
+  () => [...cart], 
+  (newValue, oldValue) => alert(newValue.join("\n"))
+);
 
-    return { name, placeOrder, addItemToCart, meal, meals, removeWatcher, currencySymbol }
-  }
-}
+// works like watch with immediate flag, with no new or old value
+watchEffect(() => console.log(JSON.parse(JSON.stringify(cart)))) 
 </script>
 
 <style scoped>
