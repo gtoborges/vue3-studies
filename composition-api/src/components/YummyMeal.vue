@@ -1,22 +1,22 @@
 <template>
 <p>
-  <strong>{{name}}</strong>&nbsp;{{priceFormat}}
+  <strong>{{name}}</strong>&nbsp;
+  <YummyMealPrice :price="price"/>
   <button @click="addToCart">Add to Cart</button>
 </p>
 </template>
 
 <script>
-import { computed } from 'vue'
-
+import YummyMealPrice from './YummyMealPrice.vue';
 export default {
+  components: { YummyMealPrice },
   props: {
     name: String,
     price: Number,
   },
   setup(props, {emit}) {
     const addToCart = () => emit("addToCart", props.name);
-    const priceFormat = computed( () => `$${props.price.toFixed(2)}`);
-    return { addToCart, priceFormat };
+    return { addToCart };
   }
 }
 </script>

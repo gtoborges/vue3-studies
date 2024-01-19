@@ -2,6 +2,13 @@
   <h1>{{name}}</h1>
   <button @click="placeOrder">Place Order</button>
   <button @click="removeWatcher">Hide cart alerts</button>
+  <br><br>
+  <label></label>
+  <select v-model="currencySymbol">
+    <option value="$">Dollars ($)</option>
+    <option value="R$">Real (R$)</option>
+    <option value="£">Pounds (£)</option>
+  </select>
   <YummyMeal v-for="meal in meals"
     :name="meal.name" 
     :price="meal.price"
@@ -11,10 +18,12 @@
 
 <script>
 import YummyMeal from './components/YummyMeal.vue'
-import { ref, reactive, watch, watchEffect } from 'vue';
+import { ref, reactive, watch, watchEffect, provide } from 'vue';
 export default {
   components: { YummyMeal },
   setup() {
+    const currencySymbol = ref('R$')
+    provide("currencySymbol", currencySymbol);
     const name = ref("The Snazzy Burger");
     const cart = reactive([])
     const meal = reactive({ name: "Hamburger", price: 5})
@@ -35,7 +44,7 @@ export default {
     // works like watch with immediate flag, with no new or old value
     watchEffect(() => console.log(JSON.parse(JSON.stringify(cart)))) 
 
-    return { name, placeOrder, addItemToCart, meal, meals, removeWatcher }
+    return { name, placeOrder, addItemToCart, meal, meals, removeWatcher, currencySymbol }
   }
 }
 </script>
