@@ -5,9 +5,9 @@
 </template>
 <script setup>
 import PostCard from "../components/PostCard.vue";
-import usePost from "../composables/usePost.js"
+import useResource from "../composables/useResource.js"
 
-const { posts, fetchAll } = usePost()
+const { items: posts, fetchAll } = useResource('posts')
 
 fetchAll()
 
