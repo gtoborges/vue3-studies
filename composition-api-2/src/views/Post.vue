@@ -6,15 +6,14 @@
   </div>
 </template>
 <script setup>
-import usePost from "../composables/usePost.js"
 import { useRoute } from 'vue-router'
+import usePost from "../composables/usePost.js"
+import useUser from "../composables/useUser.js"
 
-const { post, fetchOne } = usePost()
 const route = useRoute()
-
+const { post, fetchOne } = usePost()
 fetchOne(route.params.id)
 
-const user = {
-  name: "Leanne Graham",
-};
+const { user, fetchOne: fetchUser } = useUser()
+fetchUser(1)
 </script>
