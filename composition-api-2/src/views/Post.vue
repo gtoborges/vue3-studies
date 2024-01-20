@@ -11,8 +11,15 @@ import useResource from "../composables/useResource.js"
 
 const route = useRoute()
 const { item: post, fetchOne: fetchPost } = useResource('posts')
-fetchPost(route.params.id)
 
 const { item: user, fetchOne: fetchUser } = useResource('users')
-fetchUser(1)
+
+;(async () => {
+  await fetchPost(route.params.id)
+  await fetchUser(post.value.userId)
+})()
+
+// fetchPost(route.params.id).then(() => {
+//   fetchUser(post.value.userId)
+// })
 </script>
