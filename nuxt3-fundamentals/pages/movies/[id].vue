@@ -1,8 +1,11 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const { data } = useAsyncData(() => {
-  return $fetch(`https://www.omdbapi.com/?apikey=bd55fcf1&i=${route.params.id}`);
+const { data } = useAsyncData(`/movies/${route.params.id}`, () => {
+  return $fetch(
+    `https://www.omdbapi.com/`, 
+    { params: { apikey: 'bd55fcf1', i: route.params.id } }
+  );
 })
 console.log(data)
 </script>
