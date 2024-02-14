@@ -1,23 +1,15 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const { data } = useFetch(`https://www.omdbapi.com/`, {
+const { data, error } = useFetch(`https://www.omdbapi.com/`, { // api retorna status 200 com erro
   params: { apikey: 'bd55fcf1', i: route.params.id },
-  pick: ['Title', 'Plot'],
+  pick: ['Title', 'Plot', 'Error'],
   key: `/movies/${route.params.id}`,
 })
 
-// const { data } = useAsyncData(`/movies/${route.params.id}`, () => {
-//   return $fetch(`https://www.omdbapi.com/`, { params: { apikey: 'bd55fcf1', i: route.params.id } });
-// }, {
-//   pick: ['Title', 'Plot'],
-//   // transform(data) {
-//   //   return {
-//   //     Title: data.Title,
-//   //     Plot: data.Plot,
-//   //   }
-//   // }
-// })
+if(data.value && data.value['Error'] === "Incorrect IMDb ID.") {
+  showError({status: 404, statusMessage: "Page not found"});
+}
 </script>
 
 <template>
