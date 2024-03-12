@@ -23,6 +23,7 @@ const handleCreateEntry = (entry: Entry) => {
     <ul>
       <li>
         <EntryCard />
+        <EntryCard :entry="entry"/>
       </li>
     </ul>
   </main>
