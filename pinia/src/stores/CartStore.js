@@ -13,7 +13,6 @@ export const useCartStore = defineStore("CartStore", {
     grouped: (state) => groupBy(state.items, item => item.name),
     groupCount: (state) => {
       return (name) => state.grouped[name].length
-    }
     },
     total: (state) => state.items.reduce((acc, item) => acc + item.price, 0)
   },
@@ -24,5 +23,8 @@ export const useCartStore = defineStore("CartStore", {
         this.items.push({ ...item })
       }
     },
+    removeItems(name) {
+      this.items = this.items.filter(item => item.name !== name)
+    }
   }
 })
