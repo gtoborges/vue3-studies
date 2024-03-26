@@ -5,5 +5,11 @@ export const useAuthUserStore = defineStore("AuthUserStore", {
     return {
       username: "gtoborges_",
     }
+  },
+  actions: {
+    visitTwitterProfile(){
+      window.open(`https://twitter.com/${this.username}`, '_blank')
+    }
   }
+
 })
