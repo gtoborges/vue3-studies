@@ -21,7 +21,7 @@ const active = ref(false);
           <CartItem v-for="(items, name) in cartStore.grouped" :key="name"
             :product="items[0]"
             :count="cartStore.groupCount(name)"
-            @updateCount=""
+            @updateCount="cartStore.setItemCount(items[0], $event)"
             @clear="cartStore.removeItems(name)"
           />
         </ul>
